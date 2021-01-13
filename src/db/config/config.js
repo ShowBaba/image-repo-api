@@ -19,7 +19,10 @@ module.exports = {
     logging: false,
   },
   production: {
-    use_env_variable: "DATABASE_URL",
+    username: process.env.E_USERNAME,
+    password: process.env.E_PASSWORD,
+    database: process.env.E_DB,
+    host: process.env.E_HOST,
     dialect: "postgres",
     dialectOptions: {
       ssl: {

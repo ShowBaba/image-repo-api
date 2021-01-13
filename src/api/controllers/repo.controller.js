@@ -2,13 +2,20 @@ const models = require("../../db/models");
 
 const { Image } = models;
 
-exports.findByName = async (req, res, next) => {
+exports.find = async (req, res, next) => {
   try {
-    const images = await Image.findAll({
-      where: {
-        imageName: req.query.name,
-      },
-    });
+    console.log('starting')
+    let images;
+    if (req.query !== null) {
+      images = await Image.findAll({
+        where: {
+          imageName: req.query.name,
+        },
+      });
+    }
+    else {
+      images = await Image.findAll({})
+    }
     const publicImages = images.filter(
       (image) => (image.permission = "public")
     );

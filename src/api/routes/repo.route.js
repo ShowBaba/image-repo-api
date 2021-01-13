@@ -1,10 +1,9 @@
 const {
-  findByName
+  find
 } = require("../controllers/repo.controller");
-const auth = require("../../middlewares/auth");
 
 const router = require("express").Router();
 
-router.route('/').get(findByName)
+router.route('/').get(find)
 
 module.exports = router;

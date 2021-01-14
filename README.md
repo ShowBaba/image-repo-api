@@ -1,5 +1,5 @@
 <a href="" target="_blank"><p align="center">
-  <img src="src/public/images/gallery_icon" alt="image repo App logo">
+  <img src="src/public/images/gallery_icon.png" alt="image repo App logo">
 </p></a>
 <h2 align="center">⭐ Imgage Repository ⭐</h2>
 <h4 align="center">An image repository for managing and sharing image files.</h4>

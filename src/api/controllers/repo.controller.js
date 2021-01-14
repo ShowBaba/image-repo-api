@@ -4,17 +4,15 @@ const { Image } = models;
 
 exports.find = async (req, res, next) => {
   try {
-    console.log('starting')
     let images;
-    if (req.query !== null) {
+    if (Object.keys(req.query).length !== 0) {
       images = await Image.findAll({
         where: {
           imageName: req.query.name,
         },
       });
-    }
-    else {
-      images = await Image.findAll({})
+    } else {
+      images = await Image.findAll({});
     }
     const publicImages = images.filter(
       (image) => (image.permission = "public")

@@ -28,7 +28,7 @@ app.get("/api/v1", (req, res) => {
   res.json({
     status: "success",
     message:
-      "Welcome To Image Repositiry API, please see documentation for proper routing.",
+      "Welcome To Image Repositiry API, please see documentation for proper routing. https://documenter.getpostman.com/view/11688875/TVzUDG9U",
   });
 });
 app.use("/api/v1/auth", user);

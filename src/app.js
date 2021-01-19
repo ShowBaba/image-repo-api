@@ -7,7 +7,7 @@ const passport = require("passport");
 const cors = require("cors");
 require("dotenv").config();
 
-const user = require("./api/routes/user.route");
+const user = require("./api/routes/auth.route");
 const upload = require("./api/routes/upload.route");
 const repo = require("./api/routes/repo.route");
 

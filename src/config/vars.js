@@ -10,4 +10,5 @@ module.exports = {
   cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
   cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
   cloudinaryApiEnvVar: process.env.CLOUDINARY_API_ENV_VAR,
+  jwtExpirationInterval: process.env.jwtExpirationInterval,
 };

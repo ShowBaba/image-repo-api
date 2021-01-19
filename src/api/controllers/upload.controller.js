@@ -4,7 +4,8 @@ const fs = require("fs");
 
 const { User, Image } = models;
 
-exports.createImage = async (req, res, next) => {
+
+exports.uploadImage = async (req, res, next) => {
   try {
     const uploader = async (path) => await cloudinary.uploads(path, "images");
     const urls = [];
@@ -18,7 +19,7 @@ exports.createImage = async (req, res, next) => {
       fs.unlinkSync(path);
     }
     const { id } = req.decoded;
-    const user = await User.findByPk(req.params.id);
+    const user = await User.findByPk(id);
     if (!user) {
       res.status(400).json({
         error: "Resource not found",

@@ -1,4 +1,6 @@
 const models = require("../../db/models");
+const moment = require("moment-timezone");
+const { jwtExpirationInterval } = require("../../config/vars");
 const {
   jwtToken,
   comparePassword,
@@ -6,6 +8,16 @@ const {
 } = require("../../utils/index");
 
 const { User, tokenBlacklist } = models;
+
+function generateTokenResponse(accessToken) {
+  const tokenType = "Bearer";
+  const expiresIn = moment().add(jwtExpirationInterval, "minutes");
+  return {
+    tokenType,
+    accessToken,
+    expiresIn,
+  };
+}
 
 exports.signup = async (req, res, next) => {
   try {
@@ -33,12 +45,13 @@ exports.login = async (req, res, next) => {
     });
     if (user && comparePassword(password, user.password)) {
       const token = jwtToken.createToken(user);
+      const returnToken = generateTokenResponse(token);
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
       res.json({
         success: true,
         message: "Login Succesfully",
-        token,
+        returnToken,
       });
     } else {
       res.statusCode = 400;
@@ -47,9 +60,9 @@ exports.login = async (req, res, next) => {
       });
     }
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 
 exports.logout = async (req, res, next) => {
   try {

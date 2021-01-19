@@ -2,10 +2,11 @@ const models = require("../../db/models");
 
 const { Image } = models;
 
-exports.find = async (req, res, next) => {
+exports.findAll = async (req, res, next) => {
   try {
     let images;
     if (Object.keys(req.query).length !== 0) {
+      // search by image name
       images = await Image.findAll({
         where: {
           imageName: req.query.name,
@@ -27,3 +28,5 @@ exports.find = async (req, res, next) => {
     next(error);
   }
 };
+
+// exports.getImageById = asyn
